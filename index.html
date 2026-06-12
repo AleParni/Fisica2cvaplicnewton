@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Curso de Física | 2° Bachillerato - Leyes de Newton, MRUA y Caída Libre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f4f8;
+            color: #0f172a;
+            line-height: 1.5;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid #3b82f6;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0.5rem auto;
+            opacity: 0.9;
+        }
+
+        .hero-badge {
+            background: #3b82f6;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* SECCIÓN TEÓRICA COMPLETA CON APUNTES */
+        .theory-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .readings-card {
+            flex: 1.2;
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            box-shadow: 0 6px 14px -8px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            max-height: 700px;
+            overflow-y: auto;
+        }
+
+        .videos-card {
+            flex: 1;
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            box-shadow: 0 6px 14px -8px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-title-custom {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e40af;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reading-item {
+            background: #f8fafc;
+            padding: 0.8rem 1rem;
+            border-radius: 0.8rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .reading-item h4 {
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .reading-item p {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .theory-content {
+            font-size: 0.9rem;
+            color: #1e293b;
+            margin-top: 0.5rem;
+        }
+
+        .theory-content strong {
+            color: #0f172a;
+        }
+
+        .theory-content .formula {
+            font-family: monospace;
+            background: #e6edf5;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+        }
+
+        .reading-link {
+            display: inline-block;
+            margin-top: 0.3rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        .video-container {
+            margin-bottom: 1.2rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            font-size: 0.85rem;
+            color: #475569;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        /* Tarjetas de temas */
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .topic-card h3 {
+            color: #1e40af;
+            margin-bottom: 0.4rem;
+        }
+
+        .topic-icon {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Sección de ejercicios */
+        .exercises-section {
+            background: white;
+            border-radius: 1.8rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .section-header {
+            background: #f8fafc;
+            padding: 1.2rem 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-header h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .nav-exercises {
+            background: #eef2ff;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #cbd5e1;
+            justify-content: center;
+        }
+
+        .nav-exercises a {
+            background: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid #cbd5e1;
+            transition: 0.15s;
+        }
+
+        .nav-exercises a:hover {
+            background: #1e293b;
+            color: white;
+        }
+
+        .exercises-list {
+            padding: 1.8rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .exercise-block {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            scroll-margin-top: 1rem;
+        }
+
+        .exercise-header {
+            background: #fefce8;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            border-radius: 1.2rem 1.2rem 0 0;
+        }
+
+        .exercise-number {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #1e40af;
+            margin-bottom: 0.4rem;
+        }
+
+        .exercise-statement {
+            font-size: 1rem;
+            color: #0f172a;
+            font-weight: 500;
+            background: #fef9e3;
+            padding: 0.7rem 1rem;
+            border-radius: 0.8rem;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .solution-body {
+            padding: 1.2rem 1.5rem 1.3rem;
+            background: #f9fbfe;
+        }
+
+        .solution-title {
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .solution-title:before {
+            content: "✓";
+            background: #10b981;
+            color: white;
+            width: 1.3rem;
+            height: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .solution-step {
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+
+        .solution-step p {
+            margin: 0.5rem 0;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: #e6edf5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .back-ref {
+            margin-top: 0.7rem;
+            text-align: right;
+            font-size: 0.7rem;
+        }
+
+        .back-ref a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            background: #f1f5f9;
+            color: #334155;
+            border-top: 1px solid #cbd5e1;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .theory-section {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .exercises-list {
+                padding: 1rem;
+            }
+            .exercise-header, .solution-body {
+                padding: 1rem;
+            }
+            .readings-card {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>📘 Física 2° Bachillerato</h1>
+        <p>Leyes de Newton · Movimientos acelerados (MRUA) · Caída libre y lanzamientos verticales</p>
+        <div class="hero-badge">🎓 30 ejercicios resueltos paso a paso + Teoría completa + Videos</div>
+    </div>
+
+    <div class="main-container">
+        <!-- SECCIÓN TEÓRICA COMPLETA (APUNTES INTEGRADOS) -->
+        <div class="theory-section">
+            <!-- Lecturas teóricas con apuntes completos -->
+            <div class="readings-card">
+                <div class="section-title-custom">
+                    📖 <span>Apuntes teóricos completos</span>
+                </div>
+                
+                <div class="reading-item">
+                    <h4>🔷 1. Leyes de Newton - Fundamentos</h4>
+                    <div class="theory-content">
+                        <p><strong>Primera Ley (Inercia):</strong> Un cuerpo permanece en reposo o MRU si la fuerza neta es cero.</p>
+                        <p><strong>Segunda Ley:</strong> <span class="formula">F<sub>neta</sub> = m·a</span> (unidad: Newton, N = kg·m/s²).</p>
+                        <p><strong>Tercera Ley (Acción-Reacción):</strong> Si A ejerce fuerza sobre B, B ejerce igual y opuesta sobre A.</p>
+                        <p><strong>Fuerzas comunes:</strong> Peso (<span class="formula">P = m·g</span>), Normal (N), Tensión (T), Rozamiento (<span class="formula">f<sub>r</sub> = μ·N</span>).</p>
+                        <p><strong>Diagrama de cuerpo libre (DCL):</strong> Herramienta esencial: aislar el cuerpo y dibujar todas las fuerzas que actúan sobre él.</p>
+                    </div>
+                </div>
+
+                <div class="reading-item">
+                    <h4>🔷 2. Movimiento Rectilíneo Uniformemente Acelerado (MRUA)</h4>
+                    <div class="theory-content">
+                        <p>Ecuaciones (a = constante):</p>
+                        <p>✔ <span class="formula">v = v₀ + a·t</span></p>
+                        <p>✔ <span class="formula">x = x₀ + v₀·t + ½·a·t²</span></p>
+                        <p>✔ <span class="formula">v² = v₀² + 2a·(x - x₀)</span></p>
+                        <p><strong>Gráficas:</strong> a vs t → horizontal; v vs t → recta pendiente a; x vs t → parábola.</p>
+                        <p>Si a = 0 → Movimiento Uniforme.</p>
+                    </div>
+                </div>
+
+                <div class="reading-item">
+                    <h4>🔷 3. Caída libre y lanzamiento vertical</h4>
+                    <div class="theory-content">
+                        <p>Movimiento vertical con aceleración <span class="formula">g ≈ 9.8 m/s²</span> (hacia abajo).</p>
+                        <p><strong>Eje Y positivo hacia arriba:</strong> <span class="formula">v = v₀ - g·t</span> ; <span class="formula">y = y₀ + v₀·t - ½·g·t²</span></p>
+                        <p><strong>Altura máxima (v=0):</strong> <span class="formula">t<sub>subida</sub> = v₀/g</span> ; <span class="formula">H<sub>max</sub> = v₀²/(2g)</span></p>
+                        <p><strong>Desde el reposo (v₀=0):</strong> <span class="formula">t = √(2h/g)</span> ; <span class="formula">v = √(2gh)</span></p>
+                        <p>Simetría: tiempo subida = tiempo bajada (mismo nivel).</p>
+                    </div>
+                </div>
+
+                <div class="reading-item">
+                    <h4>🔷 4. Dinámica: Rozamiento, planos inclinados y sistemas</h4>
+                    <div class="theory-content">
+                        <p><strong>Plano inclinado (sin rozamiento):</strong> <span class="formula">a = g·senθ</span> ; Normal = <span class="formula">mg·cosθ</span></p>
+                        <p><strong>Con rozamiento cinético (bajada):</strong> <span class="formula">a = g·senθ - μ<sub>c</sub>·g·cosθ</span></p>
+                        <p><strong>Sistemas de bloques:</strong> Misma tensión en la cuerda (ideal), misma aceleración para todos.</p>
+                        <p><strong>Rozamiento estático:</strong> <span class="formula">f<sub>r,estático máx</sub> = μ<sub>e</sub>·N</span>. Si no se supera, el cuerpo no desliza.</p>
+                        <p><strong>Estrategia:</strong> 1) DCL, 2) Ejes adecuados, 3) ΣF = m·a, 4) Usar MRUA si es necesario.</p>
+                    </div>
+                </div>
+
+                <div class="reading-item">
+                    <h4>📌 Tabla resumen de fórmulas clave</h4>
+                    <div class="theory-content">
+                        <p>▪ <strong>2ª Ley:</strong> F = m·a</p>
+                        <p>▪ <strong>Peso:</strong> P = m·g</p>
+                        <p>▪ <strong>Rozamiento cinético:</strong> f<sub>r</sub> = μ<sub>c</sub>·N</p>
+                        <p>▪ <strong>MRUA velocidad:</strong> v = v₀ + a·t</p>
+                        <p>▪ <strong>MRUA posición:</strong> x = x₀ + v₀·t + ½·a·t²</p>
+                        <p>▪ <strong>Caída libre (v₀=0):</strong> t = √(2h/g)</p>
+                        <p>▪ <strong>Plano inclinado (sin rozamiento):</strong> a = g·senθ</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.7rem; color: #64748b; margin-top: 0.5rem;">📘 Estos apuntes cubren todo el temario de los ejercicios.</p>
+            </div>
+
+            <!-- Espacio para dos videos de YouTube -->
+            <div class="videos-card">
+                <div class="section-title-custom">
+                    🎥 <span>Videos explicativos</span>
+                </div>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/7N_yxHhjLfo?si=example1" title="MRUA y caída libre" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-caption">🎬 Video 1: MRUA y Caída Libre - Conceptos fundamentales</div>
+                </div>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/kKkXrT7F3AE?si=example2" title="Leyes de Newton" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-caption">🎬 Video 2: Leyes de Newton - Problemas de dinámica resueltos</div>
+                </div>
+                <p style="font-size: 0.7rem; color: #64748b; margin-top: 0.5rem;">💡 Reemplaza los src con los enlaces reales de YouTube (embed).</p>
+            </div>
+        </div>
+
+        <!-- Tarjetas de contenidos -->
+        <div class="topics">
+            <div class="topic-card"><div class="topic-icon">⚖️</div><h3>Leyes de Newton</h3><p>Dinámica, fuerza, masa y aceleración</p></div>
+            <div class="topic-card"><div class="topic-icon">📈</div><h3>MRUA</h3><p>Movimiento rectilíneo uniformemente acelerado</p></div>
+            <div class="topic-card"><div class="topic-icon">🍃</div><h3>Caída libre</h3><p>Caída vertical, lanzamientos, gravedad</p></div>
+            <div class="topic-card"><div class="topic-icon">🧩</div><h3>Problemas integrados</h3><p>Rozamiento, planos inclinados, sistemas</p></div>
+        </div>
+
+        <!-- Sección principal de ejercicios -->
+        <div class="exercises-section">
+            <div class="section-header">
+                <h2>📌 Repartido completo: 30 ejercicios de dificultad progresiva</h2>
+            </div>
+            <div class="nav-exercises">
+                <span style="font-weight: 500;">🔍 Saltar a:</span>
+                <a href="#ej1">1</a> <a href="#ej2">2</a> <a href="#ej3">3</a> <a href="#ej4">4</a> <a href="#ej5">5</a>
+                <a href="#ej6">6</a> <a href="#ej7">7</a> <a href="#ej8">8</a> <a href="#ej9">9</a> <a href="#ej10">10</a>
+                <a href="#ej11">11</a> <a href="#ej12">12</a> <a href="#ej13">13</a> <a href="#ej14">14</a> <a href="#ej15">15</a>
+                <a href="#ej16">16</a> <a href="#ej17">17</a> <a href="#ej18">18</a> <a href="#ej19">19</a> <a href="#ej20">20</a>
+                <a href="#ej21">21</a> <a href="#ej22">22</a> <a href="#ej23">23</a> <a href="#ej24">24</a> <a href="#ej25">25</a>
+                <a href="#ej26">26</a> <a href="#ej27">27</a> <a href="#ej28">28</a> <a href="#ej29">29</a> <a href="#ej30">30</a>
+            </div>
+            <div class="exercises-list">
+                <!-- Ejercicio 1 al 30 con soluciones -->
+                <div id="ej1" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 1</div><div class="exercise-statement">Se deja caer una piedra desde un puente. Si tarda 3 segundos en llegar al agua, ¿cuál es la altura del puente? (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución paso a paso</div><div class="solution-step"><p>h = ½·g·t² = 0.5 × 9.8 × 9 = 44.1 m.</p><p><strong>Respuesta:</strong> 44.1 metros.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej2" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 2</div><div class="exercise-statement">Desde una azotea se lanza verticalmente hacia abajo una pelota con velocidad inicial 5 m/s. ¿Qué velocidad tendrá después de 2 segundos? (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v = v₀ + g·t = 5 + 9.8×2 = 24.6 m/s.</p><p><strong>Respuesta:</strong> 24.6 m/s hacia abajo.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej3" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 3</div><div class="exercise-statement">Una moneda cae desde una altura de 2 metros. Calcula el tiempo de caída y la velocidad con que toca el suelo. (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t = √(2h/g) = √(4/9.8) ≈ 0.639 s ; v = g·t ≈ 6.26 m/s.</p><p><strong>Respuesta:</strong> t ≈ 0.64 s, v ≈ 6.26 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej4" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 4</div><div class="exercise-statement">Se lanza un objeto hacia arriba con velocidad 20 m/s. ¿Cuánto tarda en alcanzar la altura máxima? (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t = v₀/g = 20/9.8 ≈ 2.04 s.</p><p><strong>Respuesta:</strong> 2.04 segundos.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej5" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 5</div><div class="exercise-statement">Desde el suelo se lanza un cuerpo verticalmente hacia arriba con 15 m/s. ¿A qué altura estará después de 1 segundo?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>y = 15×1 - 0.5×9.8×1 = 10.1 m.</p><p><strong>Respuesta:</strong> 10.1 metros.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej6" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 6</div><div class="exercise-statement">Un niño deja caer una pelota desde 10 m y su amigo lanza otra hacia arriba desde el suelo con 12 m/s. ¿En qué instante y altura se cruzan? (g=9.8)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>Igualando: 10 - 4.9t² = 12t - 4.9t² → t=0.833 s ; y ≈ 6.6 m.</p><p><strong>Respuesta:</strong> 0.83 s, 6.6 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej7" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 7</div><div class="exercise-statement">Lanzamiento hacia arriba con 30 m/s desde 50 m. a) Altura máxima total, b) Tiempo total hasta suelo.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>Hmax = 50 + 30²/(2·9.8) ≈ 95.9 m; t_total ≈ 3.06 + 4.425 = 7.49 s.</p><p><strong>Respuesta:</strong> a) 95.9 m; b) 7.49 s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej8" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 8</div><div class="exercise-statement">Globo asciende a 4 m/s, suelta lastre a 80 m. Tiempo al suelo (g=10).</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>5t² -4t -80=0 → t ≈ 4.42 s.</p><p><strong>Respuesta:</strong> 4.42 s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej9" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 9</div><div class="exercise-statement">Caída en Luna (g=1.6) desde 1.5 m. Tiempo. ¿Por qué en Tierra no caerían juntos?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t = √(3/1.6) ≈ 1.37 s. En Tierra la resistencia del aire afecta a la pluma.</p><p><strong>Respuesta:</strong> 1.37 s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej10" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 10</div><div class="exercise-statement">Piedra regresa a la mano tras 5 s. Velocidad inicial y altura máxima.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v₀ = 9.8×2.5 = 24.5 m/s ; H = 24.5²/(2·9.8) ≈ 30.6 m.</p><p><strong>Respuesta:</strong> 24.5 m/s, 30.6 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej11" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 11</div><div class="exercise-statement">Auto parte del reposo con a=3 m/s². Distancia en primeros 6 s.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>d = ½·3·36 = 54 m.</p><p><strong>Respuesta:</strong> 54 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej12" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 12</div><div class="exercise-statement">Tren a 72 km/h frena con a=-1.5 m/s². Tiempo y distancia hasta parar.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>20 m/s, t=13.33 s, d≈133.3 m.</p><p><strong>Respuesta:</strong> 13.33 s, 133.3 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej13" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 13</div><div class="exercise-statement">Móvil acelera de 5 m/s a 21 m/s en 4 s. a y distancia.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = 4 m/s², d = 52 m.</p><p><strong>Respuesta:</strong> a=4 m/s², d=52 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej14" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 14</div><div class="exercise-statement">v₀=8 m/s, a=2 m/s², t=10 s. v final y distancia.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v=28 m/s, d=180 m.</p><p><strong>Respuesta:</strong> 28 m/s, 180 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej15" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 15</div><div class="exercise-statement">Auto a 25 m/s recorre 62.5 m hasta parar. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = -5 m/s².</p><p><strong>Respuesta:</strong> -5 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej16" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 16</div><div class="exercise-statement">MRUA v₀=10 m/s, a=2 m/s². Posición a los 5 s.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>x = 10·5 + 0.5·2·25 = 75 m.</p><p><strong>Respuesta:</strong> 75 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej17" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 17</div><div class="exercise-statement">Camión a 20 m/s frena a=-4 m/s². t y d hasta parar.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t=5 s, d=50 m.</p><p><strong>Respuesta:</strong> 5 s, 50 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej18" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 18</div><div class="exercise-statement">Móvil recorre 80 m en 5 s partiendo del reposo. a y v final.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a=6.4 m/s², v=32 m/s.</p><p><strong>Respuesta:</strong> 6.4 m/s², 32 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej19" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 19</div><div class="exercise-statement">Auto (2 m/s²) y moto (3 m/s²) parten del reposo. ¿Cuándo la moto tiene el doble de velocidad?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>3t = 2·(2t) → t=0. Solo al inicio.</p><p><strong>Respuesta:</strong> t=0.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej20" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 20</div><div class="exercise-statement">a=4 m/s², a los 3 s v=17 m/s. Velocidad inicial.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v₀ = 5 m/s.</p><p><strong>Respuesta:</strong> 5 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej21" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 21</div><div class="exercise-statement">Fuerza para dar a 8 kg una aceleración de 2.5 m/s².</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>F = 20 N.</p><p><strong>Respuesta:</strong> 20 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej22" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 22</div><div class="exercise-statement">Bloque 5 kg sin rozamiento, F=20 N. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = 4 m/s².</p><p><strong>Respuesta:</strong> 4 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej23" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 23</div><div class="exercise-statement">Cuerpo 3 kg, F=12 N, parte del reposo. v y d a los 5 s.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a=4 m/s², v=20 m/s, d=50 m.</p><p><strong>Respuesta:</strong> 20 m/s, 50 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej24" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 24</div><div class="exercise-statement">Objeto 2 kg en caída libre. Fuerza neta y por qué no es velocidad constante.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>F_neta = 19.6 N; la fuerza constante genera aceleración.</p><p><strong>Respuesta:</strong> 19.6 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej25" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 25</div><div class="exercise-statement">Ascensor sube con a=2 m/s², persona 70 kg. Fuerza del piso.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>N = 70×(10+2)=840 N.</p><p><strong>Respuesta:</strong> 840 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej26" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 26</div><div class="exercise-statement">Bloque 10 kg, μ=0.2, F=40 N horizontal. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>f_r=20 N, a=2 m/s².</p><p><strong>Respuesta:</strong> 2 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej27" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 27</div><div class="exercise-statement">Plano 30°, m=6 kg, sin rozamiento, F paralela=50 N. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = (50-30)/6 ≈ 3.33 m/s².</p><p><strong>Respuesta:</strong> 3.33 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej28" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 28</div><div class="exercise-statement">Mismo plano, fuerza para velocidad constante.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>F = mg sen30 = 30 N.</p><p><strong>Respuesta:</strong> 30 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej29" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 29</div><div class="exercise-statement">Bloques 3 kg y 5 kg unidos, sin rozamiento, F=24 N. a y tensión.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a=3 m/s², T=9 N.</p><p><strong>Respuesta:</strong> a=3 m/s², T=9 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+                <div id="ej30" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 30</div><div class="exercise-statement">Plano 37°, m=4 kg, μ=0.3. Aceleración bajada y velocidad tras 2 m.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a≈3.62 m/s², v≈3.81 m/s.</p><p><strong>Respuesta:</strong> a=3.62 m/s², v=3.81 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        🧠 Curso de Física 2° Bachillerato - Material didáctico completo: teoría, videos y 30 ejercicios resueltos.<br>
+        Leyes de Newton · MRUA · Caída libre · Rozamiento y planos inclinados.
+    </footer>
+</body>
+</html>
