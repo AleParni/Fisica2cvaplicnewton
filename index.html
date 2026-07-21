@@ -2,524 +2,1003 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Curso de Física | 2° Bachillerato - Leyes de Newton, MRUA y Caída Libre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Práctica: Superposición de Fuerzas Concurrentes a un Punto</title>
     <style>
+        :root {
+            --bg: #f8f9fa;
+            --text: #333;
+            --heading: #1a5276;
+            --heading2: #2874a6;
+            --box-bg: #eaf2f8;
+            --box-border: #2980b9;
+            --formula-bg: #fff;
+            --formula-border: #ddd;
+            --ejemplo-bg: #fef9e7;
+            --ejemplo-border: #f4d03f;
+            --ejercicio-bg: #e8f8f5;
+            --ejercicio-border: #1abc9c;
+            --solucion-bg: #f5eef8;
+            --solucion-border: #8e44ad;
+            --table-header: #2980b9;
+            --table-alt: #f2f2f2;
+            --shadow: rgba(0,0,0,0.08);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a2e;
+                --text: #e0e0e0;
+                --heading: #5dade2;
+                --heading2: #85c1e9;
+                --box-bg: #16213e;
+                --box-border: #5dade2;
+                --formula-bg: #0f3460;
+                --formula-border: #5dade2;
+                --ejemplo-bg: #3d2c00;
+                --ejemplo-border: #f4d03f;
+                --ejercicio-bg: #0a3d2e;
+                --ejercicio-border: #1abc9c;
+                --solucion-bg: #2d1b4e;
+                --solucion-border: #8e44ad;
+                --table-header: #1a5276;
+                --table-alt: #16213e;
+                --shadow: rgba(0,0,0,0.3);
+            }
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #f0f4f8;
-            color: #0f172a;
-            line-height: 1.5;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border-bottom: 5px solid #3b82f6;
-        }
-
-        .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0.5rem auto;
-            opacity: 0.9;
-        }
-
-        .hero-badge {
-            background: #3b82f6;
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-
-        .main-container {
-            max-width: 1400px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 30px 20px;
+            color: var(--text);
+            background: var(--bg);
+            transition: background 0.3s, color 0.3s;
         }
 
-        .theory-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .readings-card {
-            flex: 1.2;
-            background: white;
-            border-radius: 1.2rem;
-            padding: 1.5rem;
-            box-shadow: 0 6px 14px -8px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            max-height: 700px;
-            overflow-y: auto;
-        }
-
-        .videos-card {
-            flex: 1;
-            background: white;
-            border-radius: 1.2rem;
-            padding: 1.5rem;
-            box-shadow: 0 6px 14px -8px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-        }
-
-        .section-title-custom {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1e40af;
-            border-left: 5px solid #3b82f6;
-            padding-left: 0.8rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .reading-item {
-            background: #f8fafc;
-            padding: 0.8rem 1rem;
-            border-radius: 0.8rem;
-            margin-bottom: 1.2rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        .reading-item h4 {
-            color: #0f172a;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-        }
-
-        .reading-item p {
-            color: #475569;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .theory-content {
-            font-size: 0.9rem;
-            color: #1e293b;
-            margin-top: 0.5rem;
-        }
-
-        .theory-content strong {
-            color: #0f172a;
-        }
-
-        .theory-content .formula {
-            font-family: monospace;
-            background: #e6edf5;
-            padding: 0.1rem 0.3rem;
-            border-radius: 6px;
-        }
-
-        .video-container {
-            margin-bottom: 1.2rem;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-caption {
-            font-size: 0.85rem;
-            color: #475569;
+        h1 {
+            color: var(--heading);
             text-align: center;
-            margin-top: 0.3rem;
+            border-bottom: 3px solid var(--box-border);
+            padding-bottom: 15px;
+            font-size: clamp(1.5em, 4vw, 2em);
         }
 
-        .topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
+        h2 {
+            color: var(--heading2);
+            border-left: 5px solid var(--box-border);
+            padding-left: 15px;
+            margin-top: 35px;
+            font-size: clamp(1.2em, 3vw, 1.5em);
         }
 
-        .topic-card {
-            background: white;
-            border-radius: 1.2rem;
-            padding: 1rem 1.5rem;
-            flex: 1;
-            min-width: 180px;
-            text-align: center;
-            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
-            border: 1px solid #e2e8f0;
+        h3 {
+            color: var(--heading);
+            margin-top: 25px;
+        }
+
+        .box {
+            background: var(--box-bg);
+            border-left: 4px solid var(--box-border);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 2px 8px var(--shadow);
             transition: transform 0.2s;
         }
 
-        .topic-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .topic-card h3 {
-            color: #1e40af;
-            margin-bottom: 0.4rem;
-        }
-
-        .topic-icon {
-            font-size: 2rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .exercises-section {
-            background: white;
-            border-radius: 1.8rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .section-header {
-            background: #f8fafc;
-            padding: 1.2rem 2rem;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .section-header h2 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .nav-exercises {
-            background: #eef2ff;
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            border-bottom: 1px solid #cbd5e1;
-            justify-content: center;
-        }
-
-        .nav-exercises a {
-            background: white;
-            padding: 0.3rem 0.9rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            color: #1e293b;
-            font-weight: 500;
-            font-size: 0.85rem;
-            border: 1px solid #cbd5e1;
-            transition: 0.15s;
-        }
-
-        .nav-exercises a:hover {
-            background: #1e293b;
-            color: white;
-        }
-
-        .exercises-list {
-            padding: 1.8rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-        }
-
-        .exercise-block {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 1.2rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            scroll-margin-top: 1rem;
-        }
-
-        .exercise-header {
-            background: #fefce8;
-            padding: 1rem 1.5rem;
-            border-bottom: 2px solid #e2e8f0;
-            border-radius: 1.2rem 1.2rem 0 0;
-        }
-
-        .exercise-number {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #1e40af;
-            margin-bottom: 0.4rem;
-        }
-
-        .exercise-statement {
-            font-size: 1rem;
-            color: #0f172a;
-            font-weight: 500;
-            background: #fef9e3;
-            padding: 0.7rem 1rem;
-            border-radius: 0.8rem;
-            border-left: 4px solid #f59e0b;
-        }
-
-        .solution-body {
-            padding: 1.2rem 1.5rem 1.3rem;
-            background: #f9fbfe;
-        }
-
-        .solution-title {
-            font-weight: 700;
-            color: #065f46;
-            margin-bottom: 0.6rem;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .solution-title:before {
-            content: "✓";
-            background: #10b981;
-            color: white;
-            width: 1.3rem;
-            height: 1.3rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 0.8rem;
-        }
-
-        .solution-step {
-            color: #1e293b;
-            font-size: 0.95rem;
-        }
-
-        .solution-step p {
-            margin: 0.5rem 0;
+        .box:hover {
+            transform: translateX(3px);
         }
 
         .formula {
-            font-family: 'Courier New', monospace;
-            background: #e6edf5;
-            padding: 0.2rem 0.4rem;
+            background: var(--formula-bg);
+            border: 1px solid var(--formula-border);
+            padding: 12px 20px;
+            margin: 15px 0;
             border-radius: 8px;
-            font-weight: 500;
-            display: inline-block;
-        }
-
-        .back-ref {
-            margin-top: 0.7rem;
-            text-align: right;
-            font-size: 0.7rem;
-        }
-
-        .back-ref a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        footer {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
             text-align: center;
-            padding: 1.5rem;
-            font-size: 0.85rem;
-            background: #f1f5f9;
-            color: #334155;
-            border-top: 1px solid #cbd5e1;
-            margin-top: 2rem;
+            color: var(--heading);
+            box-shadow: 1px 1px 5px var(--shadow);
         }
 
-        @media (max-width: 900px) {
-            .theory-section {
-                flex-direction: column;
+        .ejemplo {
+            background: var(--ejemplo-bg);
+            border: 1px solid var(--ejemplo-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px var(--shadow);
+        }
+
+        .ejercicio {
+            background: var(--ejercicio-bg);
+            border: 1px solid var(--ejercicio-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .ejercicio:hover {
+            transform: translateY(-2px);
+        }
+
+        .solucion {
+            background: var(--solucion-bg);
+            border: 1px solid var(--solucion-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 1px 1px 5px var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid var(--formula-border);
+            padding: 10px;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        th {
+            background: var(--table-header);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: var(--table-alt);
+        }
+
+        tr:hover {
+            background: rgba(41, 128, 185, 0.1);
+        }
+
+        .paso {
+            background: var(--formula-bg);
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-left: 3px solid #27ae60;
+            box-shadow: 1px 1px 4px var(--shadow);
+        }
+
+        .importante {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        ul li {
+            margin: 8px 0;
+        }
+
+        .svg-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .svg-container svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(2px 2px 4px var(--shadow));
+        }
+
+        .calculadora {
+            background: var(--formula-bg);
+            border: 2px solid var(--box-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 3px 3px 15px var(--shadow);
+        }
+
+        .calculadora h3 {
+            text-align: center;
+            margin-top: 0;
+            color: var(--heading);
+        }
+
+        .fila-fuerza {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .fila-fuerza input {
+            width: 100px;
+            padding: 8px 10px;
+            border: 1px solid var(--formula-border);
+            border-radius: 6px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1em;
+        }
+
+        .fila-fuerza label {
+            min-width: 80px;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.2s;
+            margin: 5px;
+        }
+
+        .btn-calcular {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-calcular:hover {
+            background: #219a52;
+            transform: scale(1.05);
+        }
+
+        .btn-limpiar {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-limpiar:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .btn-agregar {
+            background: #2980b9;
+            color: white;
+        }
+
+        .btn-agregar:hover {
+            background: #1a5276;
+            transform: scale(1.05);
+        }
+
+        .resultado-calc {
+            background: var(--box-bg);
+            border: 2px solid var(--box-border);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            min-height: 50px;
+        }
+
+        .resultado-calc strong {
+            color: var(--heading);
+            font-size: 1.2em;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                max-width: 100%;
+                padding: 10px;
             }
-            .hero h1 {
-                font-size: 1.6rem;
+            .calculadora, .btn {
+                display: none !important;
             }
-            .exercises-list {
-                padding: 1rem;
+            .svg-container svg {
+                filter: none;
             }
-            .exercise-header, .solution-body {
-                padding: 1rem;
+            h1, h2, h3 {
+                color: #1a5276 !important;
             }
-            .readings-card {
-                max-height: none;
-            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--box-border);
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>📘 Física 2° Bachillerato</h1>
-        <p>Leyes de Newton · Movimientos acelerados (MRUA) · Caída libre y lanzamientos verticales</p>
-        <div class="hero-badge">🎓 30 ejercicios resueltos paso a paso + Teoría completa + Videos</div>
+
+<h1>📘 Guía Práctica: Superposición de Fuerzas Concurrentes a un Punto</h1>
+
+<div class="box">
+<strong>Objetivo:</strong> Aprender a determinar la fuerza resultante de un sistema de fuerzas que actúan sobre un mismo punto (fuerzas concurrentes), utilizando métodos gráficos y analíticos.
+</div>
+
+<h2>1. Conceptos Fundamentales</h2>
+
+<h3>1.1 ¿Qué es una fuerza concurrente?</h3>
+<p>Una <strong>fuerza</strong> es una magnitud vectorial que describe la interacción entre dos cuerpos, caracterizada por:</p>
+<ul>
+    <li><strong>Magnitud (módulo):</strong> Intensidad de la fuerza, medida en Newtons (N).</li>
+    <li><strong>Dirección:</strong> Línea de acción sobre la que actúa la fuerza.</li>
+    <li><strong>Sentido:</strong> Hacia dónde apunta la fuerza a lo largo de su dirección.</li>
+    <li><strong>Punto de aplicación:</strong> Lugar donde se aplica la fuerza.</li>
+</ul>
+
+<p>Las <strong>fuerzas concurrentes</strong> son aquellas cuyas líneas de acción se intersectan en un <strong>mismo punto</strong>. Todas las fuerzas actúan sobre un mismo cuerpo y comparten un punto común de aplicación.</p>
+
+<div class="svg-container">
+<svg width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <line x1="50" y1="250" x2="380" y2="250" stroke="#999" stroke-width="1.5"/>
+  <line x1="200" y1="280" x2="200" y2="20" stroke="#999" stroke-width="1.5"/>
+  <text x="385" y="255" font-size="12" fill="#666">X</text>
+  <text x="205" y="15" font-size="12" fill="#666">Y</text>
+  
+  <circle cx="200" cy="150" r="6" fill="#2980b9"/>
+  <text x="210" y="145" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
+  <defs>
+    <marker id="m1a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m1b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m1c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
+    </marker>
+  </defs>
+  
+  <line x1="200" y1="150" x2="300" y2="80" stroke="#e74c3c" stroke-width="3" marker-end="url(#m1a)"/>
+  <text x="305" y="75" font-size="14" fill="#e74c3c" font-weight="bold">F₁</text>
+  
+  <line x1="200" y1="150" x2="100" y2="80" stroke="#27ae60" stroke-width="3" marker-end="url(#m1b)"/>
+  <text x="70" y="75" font-size="14" fill="#27ae60" font-weight="bold">F₂</text>
+  
+  <line x1="200" y1="150" x2="150" y2="240" stroke="#8e44ad" stroke-width="3" marker-end="url(#m1c)"/>
+  <text x="130" y="255" font-size="14" fill="#8e44ad" font-weight="bold">F₃</text>
+  
+  <text x="50" y="290" font-size="11" fill="#666">Tres fuerzas concurrentes en el punto O</text>
+</svg>
+</div>
+
+<h3>1.2 Principio de Superposición</h3>
+<p>El efecto de varias fuerzas concurrentes es equivalente al efecto de una única fuerza llamada <strong>fuerza resultante (R)</strong>, que se obtiene sumando vectorialmente todas las fuerzas del sistema.</p>
+
+<div class="formula">
+    <strong>R⃗ = F⃗₁ + F⃗₂ + F⃗₃ + ... + F⃗ₙ = Σ F⃗ᵢ</strong>
+</div>
+
+<h3>1.3 Equilibrio</h3>
+<p>Un sistema de fuerzas concurrentes está en <strong>equilibrio</strong> cuando su resultante es cero:</p>
+<div class="formula">
+    <strong>R⃗ = 0 → Σ F⃗ₓ = 0  y  Σ F⃗ᵧ = 0</strong>
+</div>
+
+<h2>2. Métodos para Encontrar la Resultante</h2>
+
+<h3>2.1 Método Gráfico: Regla del Paralelogramo</h3>
+<p>Para dos fuerzas concurrentes:</p>
+<ol>
+    <li>Dibujar ambos vectores con su punto de aplicación común.</li>
+    <li>Completar el paralelogramo trazando líneas paralelas a cada fuerza.</li>
+    <li>La diagonal del paralelogramo que parte del punto común es la <strong>resultante R</strong>.</li>
+</ol>
+
+<div class="svg-container">
+<svg width="500" height="350" viewBox="0 0 500 350">
+  <rect width="500" height="350" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <defs>
+    <marker id="m2a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m2b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m2r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
+    </marker>
+  </defs>
+  
+  <line x1="120" y1="250" x2="320" y2="250" stroke="#e74c3c" stroke-width="3" marker-end="url(#m2a)"/>
+  <text x="330" y="255" font-size="14" fill="#e74c3c" font-weight="bold">F₁</text>
+  
+  <line x1="120" y1="250" x2="220" y2="100" stroke="#27ae60" stroke-width="3" marker-end="url(#m2b)"/>
+  <text x="225" y="90" font-size="14" fill="#27ae60" font-weight="bold">F₂</text>
+  
+  <line x1="320" y1="250" x2="420" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="220" y1="100" x2="420" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="6,4"/>
+  
+  <line x1="120" y1="250" x2="420" y2="100" stroke="#f39c12" stroke-width="4" marker-end="url(#m2r)"/>
+  <text x="430" y="95" font-size="16" fill="#f39c12" font-weight="bold">R</text>
+  
+  <circle cx="120" cy="250" r="5" fill="#2980b9"/>
+  <text x="105" y="265" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
+  <path d="M 140,250 A 20,20 0 0,0 136,232" stroke="#666" stroke-width="1" fill="none"/>
+  <text x="145" y="235" font-size="12" fill="#666">θ</text>
+  
+  <text x="50" y="330" font-size="12" fill="#666">La diagonal del paralelogramo es la resultante R</text>
+</svg>
+</div>
+
+<h3>2.2 Método Gráfico: Polígono de Fuerzas</h3>
+<p>Para más de dos fuerzas:</p>
+<ol>
+    <li>Dibujar el primer vector F₁ desde un punto arbitrario.</li>
+    <li>Dibujar el segundo vector F₂ desde la punta de F₁.</li>
+    <li>Continuar con F₃, F₄, etc., cada uno desde la punta del anterior.</li>
+    <li>La resultante R va desde el origen de F₁ hasta la punta del último vector.</li>
+</ol>
+
+<div class="svg-container">
+<svg width="500" height="280" viewBox="0 0 500 280">
+  <rect width="500" height="280" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <defs>
+    <marker id="m3a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m3b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m3c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
+    </marker>
+    <marker id="m3r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
+    </marker>
+  </defs>
+  
+  <line x1="80" y1="200" x2="180" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#m3a)"/>
+  <text x="120" y="195" font-size="13" fill="#e74c3c" font-weight="bold">F₁</text>
+  
+  <line x1="180" y1="200" x2="240" y2="120" stroke="#27ae60" stroke-width="3" marker-end="url(#m3b)"/>
+  <text x="245" y="115" font-size="13" fill="#27ae60" font-weight="bold">F₂</text>
+  
+  <line x1="240" y1="120" x2="340" y2="140" stroke="#8e44ad" stroke-width="3" marker-end="url(#m3c)"/>
+  <text x="345" y="135" font-size="13" fill="#8e44ad" font-weight="bold">F₃</text>
+  
+  <line x1="80" y1="200" x2="340" y2="140" stroke="#f39c12" stroke-width="4" marker-end="url(#m3r)"/>
+  <text x="200" y="155" font-size="16" fill="#f39c12" font-weight="bold">R</text>
+  
+  <circle cx="80" cy="200" r="4" fill="#2980b9"/>
+  <text x="65" y="215" font-size="12" fill="#2980b9" font-weight="bold">O</text>
+  
+  <text x="50" y="260" font-size="12" fill="#666">Polígono de fuerzas: R une el origen con la punta del último vector</text>
+</svg>
+</div>
+
+<div class="svg-container">
+<svg width="500" height="280" viewBox="0 0 500 280">
+  <rect width="500" height="280" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <defs>
+    <marker id="m4a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m4b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m4c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
+    </marker>
+    <marker id="m4d" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3498db"/>
+    </marker>
+  </defs>
+  
+  <line x1="150" y1="200" x2="250" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#m4a)"/>
+  <text x="190" y="195" font-size="13" fill="#e74c3c" font-weight="bold">F₁</text>
+  
+  <line x1="250" y1="200" x2="300" y2="120" stroke="#27ae60" stroke-width="3" marker-end="url(#m4b)"/>
+  <text x="305" y="115" font-size="13" fill="#27ae60" font-weight="bold">F₂</text>
+  
+  <line x1="300" y1="120" x2="200" y2="80" stroke="#8e44ad" stroke-width="3" marker-end="url(#m4c)"/>
+  <text x="170" y="75" font-size="13" fill="#8e44ad" font-weight="bold">F₃</text>
+  
+  <line x1="200" y1="80" x2="150" y2="200" stroke="#3498db" stroke-width="3" marker-end="url(#m4d)"/>
+  <text x="120" y="150" font-size="13" fill="#3498db" font-weight="bold">F₄</text>
+  
+  <circle cx="150" cy="200" r="4" fill="#2980b9"/>
+  
+  <text x="50" y="260" font-size="12" fill="#666">Polígono cerrado → Equilibrio: R = 0</text>
+</svg>
+</div>
+
+<h3>2.3 Método Analítico: Descomposición en Componentes</h3>
+<p>Este es el método más preciso y se usa cuando se conocen las magnitudes y ángulos.</p>
+
+<div class="box">
+<strong>Pasos del método analítico:</strong>
+</div>
+
+<div class="paso">
+<strong>Paso 1:</strong> Establecer un sistema de ejes coordenados (X, Y) con origen en el punto de concurrencia.
+</div>
+
+<div class="paso">
+<strong>Paso 2:</strong> Descomponer cada fuerza en sus componentes horizontal (Fₓ) y vertical (Fᵧ):
+<div class="formula">
+    Fₓ = F · cos(θ)<br>
+    Fᵧ = F · sen(θ)
+</div>
+Donde θ es el ángulo medido desde el eje X positivo en sentido antihorario.
+</div>
+
+<div class="svg-container">
+<svg width="450" height="350" viewBox="0 0 450 350">
+  <rect width="450" height="350" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <defs>
+    <marker id="m5a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m5b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m5c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
+    </marker>
+  </defs>
+  
+  <line x1="50" y1="300" x2="420" y2="300" stroke="#999" stroke-width="1.5"/>
+  <line x1="100" y1="330" x2="100" y2="30" stroke="#999" stroke-width="1.5"/>
+  <text x="425" y="305" font-size="12" fill="#666">X</text>
+  <text x="105" y="25" font-size="12" fill="#666">Y</text>
+  
+  <line x1="100" y1="300" x2="320" y2="100" stroke="#e74c3c" stroke-width="3" marker-end="url(#m5a)"/>
+  <text x="330" y="95" font-size="15" fill="#e74c3c" font-weight="bold">F</text>
+  
+  <line x1="100" y1="300" x2="320" y2="300" stroke="#27ae60" stroke-width="2.5" marker-end="url(#m5b)"/>
+  <text x="200" y="320" font-size="13" fill="#27ae60" font-weight="bold">Fₓ = F·cos(θ)</text>
+  
+  <line x1="320" y1="300" x2="320" y2="100" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#m5c)"/>
+  <text x="330" y="200" font-size="13" fill="#8e44ad" font-weight="bold">Fᵧ = F·sen(θ)</text>
+  
+  <path d="M 120,300 A 20,20 0 0,0 116,282" stroke="#666" stroke-width="1.5" fill="none"/>
+  <text x="125" y="285" font-size="14" fill="#666" font-weight="bold">θ</text>
+  
+  <circle cx="100" cy="300" r="5" fill="#2980b9"/>
+  <text x="85" y="315" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
+  <line x1="320" y1="100" x2="320" y2="300" stroke="#8e44ad" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="100" y1="300" x2="320" y2="300" stroke="#27ae60" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <text x="50" y="345" font-size="11" fill="#666">Descomposición de un vector en componentes rectangulares</text>
+</svg>
+</div>
+
+<div class="paso">
+<strong>Paso 3:</strong> Sumar algebraicamente todas las componentes:
+<div class="formula">
+    Rₓ = Σ Fₓᵢ<br>
+    Rᵧ = Σ Fᵧᵢ
+</div>
+</div>
+
+<div class="paso">
+<strong>Paso 4:</strong> Calcular la magnitud de la resultante:
+<div class="formula">
+    R = √(Rₓ² + Rᵧ²)
+</div>
+</div>
+
+<div class="paso">
+<strong>Paso 5:</strong> Calcular la dirección de la resultante:
+<div class="formula">
+    θᵣ = arctan(Rᵧ / Rₓ)
+</div>
+<span class="importante">Nota:</span> Ajustar el cuadrante según los signos de Rₓ y Rᵧ.
+</div>
+
+<h2>3. Tabla de Signos por Cuadrante</h2>
+
+<table>
+    <tr>
+        <th>Cuadrante</th>
+        <th>Rₓ</th>
+        <th>Rᵧ</th>
+        <th>Ángulo θᵣ</th>
+    </tr>
+    <tr>
+        <td>I (0° - 90°)</td>
+        <td>+</td>
+        <td>+</td>
+        <td>θᵣ = arctan(Rᵧ/Rₓ)</td>
+    </tr>
+    <tr>
+        <td>II (90° - 180°)</td>
+        <td>-</td>
+        <td>+</td>
+        <td>θᵣ = 180° - arctan(|Rᵧ/Rₓ|)</td>
+    </tr>
+    <tr>
+        <td>III (180° - 270°)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>θᵣ = 180° + arctan(|Rᵧ/Rₓ|)</td>
+    </tr>
+    <tr>
+        <td>IV (270° - 360°)</td>
+        <td>+</td>
+        <td>-</td>
+        <td>θᵣ = 360° - arctan(|Rᵧ/Rₓ|)</td>
+    </tr>
+</table>
+
+<div class="svg-container">
+<svg width="400" height="350" viewBox="0 0 400 350">
+  <rect width="400" height="350" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <defs>
+    <marker id="m6a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m6b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m6c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
+    </marker>
+    <marker id="m6d" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
+    </marker>
+  </defs>
+  
+  <line x1="200" y1="320" x2="200" y2="30" stroke="#999" stroke-width="1.5"/>
+  <line x1="30" y1="175" x2="370" y2="175" stroke="#999" stroke-width="1.5"/>
+  <text x="205" y="25" font-size="12" fill="#666">Y</text>
+  <text x="375" y="180" font-size="12" fill="#666">X</text>
+  
+  <text x="270" y="100" font-size="16" fill="#27ae60" font-weight="bold">I</text>
+  <text x="270" y="120" font-size="11" fill="#27ae60">Rₓ (+) Rᵧ (+)</text>
+  <line x1="220" y1="140" x2="280" y2="80" stroke="#27ae60" stroke-width="2" marker-end="url(#m6b)"/>
+  
+  <text x="100" y="100" font-size="16" fill="#e74c3c" font-weight="bold">II</text>
+  <text x="80" y="120" font-size="11" fill="#e74c3c">Rₓ (-) Rᵧ (+)</text>
+  <line x1="180" y1="140" x2="120" y2="80" stroke="#e74c3c" stroke-width="2" marker-end="url(#m6a)"/>
+  
+  <text x="100" y="260" font-size="16" fill="#8e44ad" font-weight="bold">III</text>
+  <text x="80" y="280" font-size="11" fill="#8e44ad">Rₓ (-) Rᵧ (-)</text>
+  <line x1="180" y1="210" x2="120" y2="270" stroke="#8e44ad" stroke-width="2" marker-end="url(#m6c)"/>
+  
+  <text x="270" y="260" font-size="16" fill="#f39c12" font-weight="bold">IV</text>
+  <text x="270" y="280" font-size="11" fill="#f39c12">Rₓ (+) Rᵧ (-)</text>
+  <line x1="220" y1="210" x2="280" y2="270" stroke="#f39c12" stroke-width="2" marker-end="url(#m6d)"/>
+  
+  <circle cx="200" cy="175" r="5" fill="#2980b9"/>
+  <text x="210" y="170" font-size="12" fill="#2980b9" font-weight="bold">O</text>
+  
+  <text x="300" y="160" font-size="11" fill="#666">0°</text>
+  <text x="180" y="50" font-size="11" fill="#666">90°</text>
+  <text x="60" y="160" font-size="11" fill="#666">180°</text>
+  <text x="180" y="310" font-size="11" fill="#666">270°</text>
+</svg>
+</div>
+
+<h2>4. Ejemplo Resuelto</h2>
+
+<div class="ejemplo">
+<strong>📌 Problema:</strong> Tres fuerzas actúan sobre un punto:
+<ul>
+    <li>F₁ = 100 N a 30° respecto al eje X positivo</li>
+    <li>F₂ = 150 N a 120° respecto al eje X positivo</li>
+    <li>F₃ = 80 N a 240° respecto al eje X positivo</li>
+</ul>
+<strong>Determinar:</strong> La fuerza resultante (magnitud y dirección).
+</div>
+
+<div class="svg-container">
+<svg width="500" height="400" viewBox="0 0 500 400">
+  <rect width="500" height="400" fill="var(--bg)" style="fill-opacity:0"/>
+  
+  <defs>
+    <marker id="m7a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="m7b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+    </marker>
+    <marker id="m7c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
+    </marker>
+    <marker id="m7r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
+    </marker>
+  </defs>
+  
+  <line x1="50" y1="350" x2="480" y2="350" stroke="#999" stroke-width="1.5"/>
+  <line x1="250" y1="380" x2="250" y2="30" stroke="#999" stroke-width="1.5"/>
+  <text x="485" y="355" font-size="12" fill="#666">X</text>
+  <text x="255" y="25" font-size="12" fill="#666">Y</text>
+  
+  <line x1="250" y1="200" x2="319" y2="160" stroke="#e74c3c" stroke-width="3" marker-end="url(#m7a)"/>
+  <text x="325" y="155" font-size="13" fill="#e74c3c" font-weight="bold">F₁=100N (30°)</text>
+  
+  <line x1="250" y1="200" x2="190" y2="96" stroke="#27ae60" stroke-width="3" marker-end="url(#m7b)"/>
+  <text x="130" y="86" font-size="13" fill="#27ae60" font-weight="bold">F₂=150N (120°)</text>
+  
+  <line x1="250" y1="200" x2="218" y2="255" stroke="#8e44ad" stroke-width="3" marker-end="url(#m7c)"/>
+  <text x="170" y="275" font-size="13" fill="#8e44ad" font-weight="bold">F₃=80N (240°)</text>
+  
+  <line x1="250" y1="200" x2="207" y2="34" stroke="#f39c12" stroke-width="4" marker-end="url(#m7r)"/>
+  <text x="170" y="20" font-size="15" fill="#f39c12" font-weight="bold">R ≈ 114.2 N</text>
+  
+  <circle cx="250" cy="200" r="6" fill="#2980b9"/>
+  <text x="260" y="195" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
+  <path d="M 270,200 A 20,20 0 0,0 266,182" stroke="#e74c3c" stroke-width="1" fill="none"/>
+  <text x="275" y="185" font-size="11" fill="#e74c3c">30°</text>
+  
+  <path d="M 230,200 A 20,20 0 0,1 234,182" stroke="#27ae60" stroke-width="1" fill="none"/>
+  <text x="200" y="185" font-size="11" fill="#27ae60">120°</text>
+</svg>
+</div>
+
+<div class="solucion">
+<strong>✅ Solución paso a paso:</strong>
+
+<h4>Paso 1: Descomponer cada fuerza</h4>
+
+<table>
+    <tr>
+        <th>Fuerza</th>
+        <th>Magnitud</th>
+        <th>Ángulo</th>
+        <th>Fₓ = F·cos(θ)</th>
+        <th>Fᵧ = F·sen(θ)</th>
+    </tr>
+    <tr>
+        <td>F₁</td>
+        <td>100 N</td>
+        <td>30°</td>
+        <td>100·cos(30°) = 86.60 N</td>
+        <td>100·sen(30°) = 50.00 N</td>
+    </tr>
+    <tr>
+        <td>F₂</td>
+        <td>150 N</td>
+        <td>120°</td>
+        <td>150·cos(120°) = -75.00 N</td>
+        <td>150·sen(120°) = 129.90 N</td>
+    </tr>
+    <tr>
+        <td>F₃</td>
+        <td>80 N</td>
+        <td>240°</td>
+        <td>80·cos(240°) = -40.00 N</td>
+        <td>80·sen(240°) = -69.28 N</td>
+    </tr>
+    <tr style="background:#d5f5e3; font-weight:bold;">
+        <td colspan="3">Σ (Sumas)</td>
+        <td>Rₓ = -28.40 N</td>
+        <td>Rᵧ = 110.62 N</td>
+    </tr>
+</table>
+
+<h4>Paso 2: Calcular la magnitud de R</h4>
+<div class="formula">
+    R = √((-28.40)² + (110.62)²) = √(806.56 + 12236.78) = √13043.34<br>
+    <strong>R ≈ 114.2 N</strong>
+</div>
+
+<h4>Paso 3: Calcular la dirección de R</h4>
+<p>Como Rₓ es negativo y Rᵧ es positivo, la resultante está en el <strong>cuadrante II</strong>.</p>
+<div class="formula">
+    θᵣ = arctan(110.62 / 28.40) = arctan(3.895) = 75.6°<br>
+    θᵣ = 180° - 75.6° = <strong>104.4°</strong> (desde el eje X positivo)
+</div>
+
+<h4>Respuesta:</h4>
+<div class="box" style="text-align:center; font-size:1.2em;">
+    <strong>R = 114.2 N a 104.4°</strong> respecto al eje X positivo (antihorario)
+</div>
+</div>
+
+<h2>5. Ejercicios Propuestos</h2>
+
+<div class="ejercicio">
+<strong>📝 Ejercicio 1:</strong> Dos fuerzas actúan sobre un punto: F₁ = 50 N a 0° y F₂ = 80 N a 90°. Hallar la resultante.
+<br><br>
+<strong>Respuesta esperada:</strong> R ≈ 94.3 N a 58.0°
+</div>
+
+<div class="ejercicio">
+<strong>📝 Ejercicio 2:</strong> Tres fuerzas actúan sobre un punto: F₁ = 200 N a 45°, F₂ = 150 N a 135°, F₃ = 100 N a 270°. Hallar la resultante.
+<br><br>
+<strong>Respuesta esperada:</strong> R ≈ 111.8 N a 116.6°
+</div>
+
+<div class="ejercicio">
+<strong>📝 Ejercicio 3 (Equilibrio):</strong> Dos fuerzas F₁ = 60 N a 30° y F₂ = 80 N a 150° actúan sobre un punto. ¿Qué fuerza F₃ se necesita para que el sistema esté en equilibrio?
+<br><br>
+<strong>Pista:</strong> F₃ debe ser igual en magnitud y opuesta en dirección a la resultante de F₁ y F₂.
+<br><br>
+<strong>Respuesta esperada:</strong> F₃ ≈ 100 N a 277.9°
+</div>
+
+<div class="ejercicio">
+<strong>📝 Ejercicio 4:</strong> Cuatro fuerzas actúan sobre un punto: F₁ = 120 N a 0°, F₂ = 90 N a 60°, F₃ = 60 N a 180°, F₄ = 100 N a 300°. Hallar la resultante.
+<br><br>
+<strong>Respuesta esperada:</strong> R ≈ 96.4 N a 18.4°
+</div>
+
+<h2>6. Fórmulas de Resumen</h2>
+
+<div class="box">
+<table style="border:none;">
+    <tr style="background:none;">
+        <td style="border:none; text-align:left; font-weight:bold;">Componentes:</td>
+        <td style="border:none; text-align:left;">Fₓ = F·cos(θ) &nbsp;&nbsp;|&nbsp;&nbsp; Fᵧ = F·sen(θ)</td>
+    </tr>
+    <tr style="background:none;">
+        <td style="border:none; text-align:left; font-weight:bold;">Resultante:</td>
+        <td style="border:none; text-align:left;">R = √(Rₓ² + Rᵧ²)</td>
+    </tr>
+    <tr style="background:none;">
+        <td style="border:none; text-align:left; font-weight:bold;">Dirección:</td>
+        <td style="border:none; text-align:left;">θᵣ = arctan(Rᵧ/Rₓ) → ajustar cuadrante</td>
+    </tr>
+    <tr style="background:none;">
+        <td style="border:none; text-align:left; font-weight:bold;">Equilibrio:</td>
+        <td style="border:none; text-align:left;">ΣFₓ = 0 &nbsp;y&nbsp; ΣFᵧ = 0</td>
+    </tr>
+</table>
+</div>
+
+<h2>7. 🧮 Calculadora de Resultante</h2>
+
+<div class="calculadora">
+    <h3>⚡ Calculadora Interactiva</h3>
+    <p>Ingresa las fuerzas y sus ángulos (en grados, desde el eje X positivo en sentido antihorario):</p>
+    
+    <div id="fuerzas-container">
+        <div class="fila-fuerza">
+            <label>F₁:</label>
+            <input type="number" id="mag1" placeholder="Magnitud (N)" step="0.01">
+            <input type="number" id="ang1" placeholder="Ángulo (°)" step="0.01">
+        </div>
+        <div class="fila-fuerza">
+            <label>F₂:</label>
+            <input type="number" id="mag2" placeholder="Magnitud (N)" step="0.01">
+            <input type="number" id="ang2" placeholder="Ángulo (°)" step="0.01">
+        </div>
     </div>
-
-    <div class="main-container">
-        <div class="theory-section">
-            <div class="readings-card">
-                <div class="section-title-custom">
-                    📖 <span>Apuntes teóricos completos</span>
-                </div>
-                
-                <div class="reading-item">
-                    <h4>🔷 1. Leyes de Newton - Fundamentos</h4>
-                    <div class="theory-content">
-                        <p><strong>Primera Ley (Inercia):</strong> Un cuerpo permanece en reposo o MRU si la fuerza neta es cero.</p>
-                        <p><strong>Segunda Ley:</strong> <span class="formula">F<sub>neta</sub> = m·a</span> (unidad: Newton, N = kg·m/s²).</p>
-                        <p><strong>Tercera Ley (Acción-Reacción):</strong> Si A ejerce fuerza sobre B, B ejerce igual y opuesta sobre A.</p>
-                        <p><strong>Fuerzas comunes:</strong> Peso (<span class="formula">P = m·g</span>), Normal (N), Tensión (T), Rozamiento (<span class="formula">f<sub>r</sub> = μ·N</span>).</p>
-                        <p><strong>Diagrama de cuerpo libre (DCL):</strong> Herramienta esencial: aislar el cuerpo y dibujar todas las fuerzas que actúan sobre él.</p>
-                    </div>
-                </div>
-
-                <div class="reading-item">
-                    <h4>🔷 2. Movimiento Rectilíneo Uniformemente Acelerado (MRUA)</h4>
-                    <div class="theory-content">
-                        <p>Ecuaciones (a = constante):</p>
-                        <p>✔ <span class="formula">v = v₀ + a·t</span></p>
-                        <p>✔ <span class="formula">x = x₀ + v₀·t + ½·a·t²</span></p>
-                        <p>✔ <span class="formula">v² = v₀² + 2a·(x - x₀)</span></p>
-                        <p><strong>Gráficas:</strong> a vs t → horizontal; v vs t → recta pendiente a; x vs t → parábola.</p>
-                        <p>Si a = 0 → Movimiento Uniforme.</p>
-                    </div>
-                </div>
-
-                <div class="reading-item">
-                    <h4>🔷 3. Caída libre y lanzamiento vertical</h4>
-                    <div class="theory-content">
-                        <p>Movimiento vertical con aceleración <span class="formula">g ≈ 9.8 m/s²</span> (hacia abajo).</p>
-                        <p><strong>Eje Y positivo hacia arriba:</strong> <span class="formula">v = v₀ - g·t</span> ; <span class="formula">y = y₀ + v₀·t - ½·g·t²</span></p>
-                        <p><strong>Altura máxima (v=0):</strong> <span class="formula">t<sub>subida</sub> = v₀/g</span> ; <span class="formula">H<sub>max</sub> = v₀²/(2g)</span></p>
-                        <p><strong>Desde el reposo (v₀=0):</strong> <span class="formula">t = √(2h/g)</span> ; <span class="formula">v = √(2gh)</span></p>
-                        <p>Simetría: tiempo subida = tiempo bajada (mismo nivel).</p>
-                    </div>
-                </div>
-
-                <div class="reading-item">
-                    <h4>🔷 4. Dinámica: Rozamiento, planos inclinados y sistemas</h4>
-                    <div class="theory-content">
-                        <p><strong>Plano inclinado (sin rozamiento):</strong> <span class="formula">a = g·senθ</span> ; Normal = <span class="formula">mg·cosθ</span></p>
-                        <p><strong>Con rozamiento cinético (bajada):</strong> <span class="formula">a = g·senθ - μ<sub>c</sub>·g·cosθ</span></p>
-                        <p><strong>Sistemas de bloques:</strong> Misma tensión en la cuerda (ideal), misma aceleración para todos.</p>
-                        <p><strong>Rozamiento estático:</strong> <span class="formula">f<sub>r,estático máx</sub> = μ<sub>e</sub>·N</span>. Si no se supera, el cuerpo no desliza.</p>
-                        <p><strong>Estrategia:</strong> 1) DCL, 2) Ejes adecuados, 3) ΣF = m·a, 4) Usar MRUA si es necesario.</p>
-                    </div>
-                </div>
-
-                <div class="reading-item">
-                    <h4>📌 Tabla resumen de fórmulas clave</h4>
-                    <div class="theory-content">
-                        <p>▪ <strong>2ª Ley:</strong> F = m·a</p>
-                        <p>▪ <strong>Peso:</strong> P = m·g</p>
-                        <p>▪ <strong>Rozamiento cinético:</strong> f<sub>r</sub> = μ<sub>c</sub>·N</p>
-                        <p>▪ <strong>MRUA velocidad:</strong> v = v₀ + a·t</p>
-                        <p>▪ <strong>MRUA posición:</strong> x = x₀ + v₀·t + ½·a·t²</p>
-                        <p>▪ <strong>Caída libre (v₀=0):</strong> t = √(2h/g)</p>
-                        <p>▪ <strong>Plano inclinado (sin rozamiento):</strong> a = g·senθ</p>
-                    </div>
-                </div>
-                <p style="font-size: 0.7rem; color: #64748b; margin-top: 0.5rem;">📘 Estos apuntes cubren todo el temario de los ejercicios.</p>
-            </div>
-
-            <div class="videos-card">
-                <div class="section-title-custom">
-                    🎥 <span>Videos explicativos</span>
-                </div>
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/MgNyiOtLH8" title="MRUA y caída libre" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-caption">🎬 Video 1: MRUA y Caída Libre - Conceptos fundamentales</div>
-                </div>
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/4BKvHL0QPrs?start=95" title="Leyes de Newton" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-caption">🎬 Video 2: Leyes de Newton - Problemas de dinámica resueltos</div>
-                </div>
-                <p style="font-size: 0.7rem; color: #64748b; margin-top: 0.5rem;">💡 Videos insertados correctamente en formato embed.</p>
-            </div>
-        </div>
-
-        <div class="topics">
-            <div class="topic-card"><div class="topic-icon">⚖️</div><h3>Leyes de Newton</h3><p>Dinámica, fuerza, masa y aceleración</p></div>
-            <div class="topic-card"><div class="topic-icon">📈</div><h3>MRUA</h3><p>Movimiento rectilíneo uniformemente acelerado</p></div>
-            <div class="topic-card"><div class="topic-icon">🍃</div><h3>Caída libre</h3><p>Caída vertical, lanzamientos, gravedad</p></div>
-            <div class="topic-card"><div class="topic-icon">🧩</div><h3>Problemas integrados</h3><p>Rozamiento, planos inclinados, sistemas</p></div>
-        </div>
-
-        <div class="exercises-section">
-            <div class="section-header">
-                <h2>📌 Repartido completo: 30 ejercicios de dificultad progresiva</h2>
-            </div>
-            <div class="nav-exercises">
-                <span style="font-weight: 500;">🔍 Saltar a:</span>
-                <a href="#ej1">1</a> <a href="#ej2">2</a> <a href="#ej3">3</a> <a href="#ej4">4</a> <a href="#ej5">5</a>
-                <a href="#ej6">6</a> <a href="#ej7">7</a> <a href="#ej8">8</a> <a href="#ej9">9</a> <a href="#ej10">10</a>
-                <a href="#ej11">11</a> <a href="#ej12">12</a> <a href="#ej13">13</a> <a href="#ej14">14</a> <a href="#ej15">15</a>
-                <a href="#ej16">16</a> <a href="#ej17">17</a> <a href="#ej18">18</a> <a href="#ej19">19</a> <a href="#ej20">20</a>
-                <a href="#ej21">21</a> <a href="#ej22">22</a> <a href="#ej23">23</a> <a href="#ej24">24</a> <a href="#ej25">25</a>
-                <a href="#ej26">26</a> <a href="#ej27">27</a> <a href="#ej28">28</a> <a href="#ej29">29</a> <a href="#ej30">30</a>
-            </div>
-            <div class="exercises-list">
-                <div id="ej1" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 1</div><div class="exercise-statement">Se deja caer una piedra desde un puente. Si tarda 3 segundos en llegar al agua, ¿cuál es la altura del puente? (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución paso a paso</div><div class="solution-step"><p>h = ½·g·t² = 0.5 × 9.8 × 9 = 44.1 m.</p><p><strong>Respuesta:</strong> 44.1 metros.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej2" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 2</div><div class="exercise-statement">Desde una azotea se lanza verticalmente hacia abajo una pelota con velocidad inicial 5 m/s. ¿Qué velocidad tendrá después de 2 segundos? (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v = v₀ + g·t = 5 + 9.8×2 = 24.6 m/s.</p><p><strong>Respuesta:</strong> 24.6 m/s hacia abajo.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej3" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 3</div><div class="exercise-statement">Una moneda cae desde una altura de 2 metros. Calcula el tiempo de caída y la velocidad con que toca el suelo. (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t = √(2h/g) = √(4/9.8) ≈ 0.639 s ; v = g·t ≈ 6.26 m/s.</p><p><strong>Respuesta:</strong> t ≈ 0.64 s, v ≈ 6.26 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej4" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 4</div><div class="exercise-statement">Se lanza un objeto hacia arriba con velocidad 20 m/s. ¿Cuánto tarda en alcanzar la altura máxima? (g = 9.8 m/s²)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t = v₀/g = 20/9.8 ≈ 2.04 s.</p><p><strong>Respuesta:</strong> 2.04 segundos.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej5" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 5</div><div class="exercise-statement">Desde el suelo se lanza un cuerpo verticalmente hacia arriba con 15 m/s. ¿A qué altura estará después de 1 segundo?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>y = 15×1 - 0.5×9.8×1 = 10.1 m.</p><p><strong>Respuesta:</strong> 10.1 metros.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej6" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 6</div><div class="exercise-statement">Un niño deja caer una pelota desde 10 m y su amigo lanza otra hacia arriba desde el suelo con 12 m/s. ¿En qué instante y altura se cruzan? (g=9.8)</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>Igualando: 10 - 4.9t² = 12t - 4.9t² → t=0.833 s ; y ≈ 6.6 m.</p><p><strong>Respuesta:</strong> 0.83 s, 6.6 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej7" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 7</div><div class="exercise-statement">Lanzamiento hacia arriba con 30 m/s desde 50 m. a) Altura máxima total, b) Tiempo total hasta suelo.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>Hmax = 50 + 30²/(2·9.8) ≈ 95.9 m; t_total ≈ 3.06 + 4.425 = 7.49 s.</p><p><strong>Respuesta:</strong> a) 95.9 m; b) 7.49 s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej8" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 8</div><div class="exercise-statement">Globo asciende a 4 m/s, suelta lastre a 80 m. Tiempo al suelo (g=10).</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>5t² -4t -80=0 → t ≈ 4.42 s.</p><p><strong>Respuesta:</strong> 4.42 s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej9" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 9</div><div class="exercise-statement">Caída en Luna (g=1.6) desde 1.5 m. Tiempo. ¿Por qué en Tierra no caerían juntos?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t = √(3/1.6) ≈ 1.37 s. En Tierra la resistencia del aire afecta a la pluma.</p><p><strong>Respuesta:</strong> 1.37 s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej10" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 10</div><div class="exercise-statement">Piedra regresa a la mano tras 5 s. Velocidad inicial y altura máxima.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v₀ = 9.8×2.5 = 24.5 m/s ; H = 24.5²/(2·9.8) ≈ 30.6 m.</p><p><strong>Respuesta:</strong> 24.5 m/s, 30.6 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej11" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 11</div><div class="exercise-statement">Auto parte del reposo con a=3 m/s². Distancia en primeros 6 s.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>d = ½·3·36 = 54 m.</p><p><strong>Respuesta:</strong> 54 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej12" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 12</div><div class="exercise-statement">Tren a 72 km/h frena con a=-1.5 m/s². Tiempo y distancia hasta parar.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>20 m/s, t=13.33 s, d≈133.3 m.</p><p><strong>Respuesta:</strong> 13.33 s, 133.3 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej13" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 13</div><div class="exercise-statement">Móvil acelera de 5 m/s a 21 m/s en 4 s. a y distancia.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = 4 m/s², d = 52 m.</p><p><strong>Respuesta:</strong> a=4 m/s², d=52 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej14" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 14</div><div class="exercise-statement">v₀=8 m/s, a=2 m/s², t=10 s. v final y distancia.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v=28 m/s, d=180 m.</p><p><strong>Respuesta:</strong> 28 m/s, 180 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej15" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 15</div><div class="exercise-statement">Auto a 25 m/s recorre 62.5 m hasta parar. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = -5 m/s².</p><p><strong>Respuesta:</strong> -5 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej16" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 16</div><div class="exercise-statement">MRUA v₀=10 m/s, a=2 m/s². Posición a los 5 s.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>x = 10·5 + 0.5·2·25 = 75 m.</p><p><strong>Respuesta:</strong> 75 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej17" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 17</div><div class="exercise-statement">Camión a 20 m/s frena a=-4 m/s². t y d hasta parar.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>t=5 s, d=50 m.</p><p><strong>Respuesta:</strong> 5 s, 50 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej18" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 18</div><div class="exercise-statement">Móvil recorre 80 m en 5 s partiendo del reposo. a y v final.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a=6.4 m/s², v=32 m/s.</p><p><strong>Respuesta:</strong> 6.4 m/s², 32 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej19" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 19</div><div class="exercise-statement">Auto (2 m/s²) y moto (3 m/s²) parten del reposo. ¿Cuándo la moto tiene el doble de velocidad?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>3t = 2·(2t) → t=0. Solo al inicio.</p><p><strong>Respuesta:</strong> t=0.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej20" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 20</div><div class="exercise-statement">a=4 m/s², a los 3 s v=17 m/s. Velocidad inicial.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>v₀ = 5 m/s.</p><p><strong>Respuesta:</strong> 5 m/s.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej21" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 21</div><div class="exercise-statement">Fuerza para dar a 8 kg una aceleración de 2.5 m/s².</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>F = 20 N.</p><p><strong>Respuesta:</strong> 20 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej22" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 22</div><div class="exercise-statement">Bloque 5 kg sin rozamiento, F=20 N. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = 4 m/s².</p><p><strong>Respuesta:</strong> 4 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej23" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 23</div><div class="exercise-statement">Cuerpo 3 kg, F=12 N, parte del reposo. v y d a los 5 s.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a=4 m/s², v=20 m/s, d=50 m.</p><p><strong>Respuesta:</strong> 20 m/s, 50 m.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej24" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 24</div><div class="exercise-statement">Objeto 2 kg en caída libre. Fuerza neta y por qué no es velocidad constante.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>F_neta = 19.6 N; la fuerza constante genera aceleración.</p><p><strong>Respuesta:</strong> 19.6 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej25" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 25</div><div class="exercise-statement">Ascensor sube con a=2 m/s², persona 70 kg. Fuerza del piso.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>N = 70×(10+2)=840 N.</p><p><strong>Respuesta:</strong> 840 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej26" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 26</div><div class="exercise-statement">Bloque 10 kg, μ=0.2, F=40 N horizontal. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>f_r=20 N, a=2 m/s².</p><p><strong>Respuesta:</strong> 2 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej27" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 27</div><div class="exercise-statement">Plano 30°, m=6 kg, sin rozamiento, F paralela=50 N. Aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = (50-30)/6 ≈ 3.33 m/s².</p><p><strong>Respuesta:</strong> 3.33 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej28" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 28</div><div class="exercise-statement">Mismo plano inclinado del ejercicio anterior (30°, m=6 kg, sin rozamiento). ¿Qué fuerza paralela se requiere para que el cuerpo ascienda con velocidad constante?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>Para v = cte, la aceleración es cero (F_neta = 0). La fuerza aplicada debe equilibrar exactamente a la componente del peso paralela al plano: F = P_x = m·g·sen(θ) = 6 × 9.8 × sen(30°) = 29.4 N.</p><p><strong>Respuesta:</strong> 29.4 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej29" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 29</div><div class="exercise-statement">Un cuerpo de 4 kg se desliza hacia abajo por un plano inclinado de 45° con un coeficiente de rozamiento cinético μ = 0.15. Calcula su aceleración.</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>a = g·sen(θ) - μ·g·cos(θ) = 9.8·sen(45°) - 0.15·9.8·cos(45°) ≈ 6.93 - 1.04 = 5.89 m/s².</p><p><strong>Respuesta:</strong> 5.89 m/s².</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-                <div id="ej30" class="exercise-block"><div class="exercise-header"><div class="exercise-number">📌 Ejercicio 30</div><div class="exercise-statement">Dos bloques (m₁ = 3 kg y m₂ = 2 kg) están conectados por una cuerda ideal sobre una mesa horizontal sin rozamiento. Si se tira de m₂ con una fuerza horizontal de 15 N, ¿cuál es la tensión en la cuerda?</div></div><div class="solution-body"><div class="solution-title">Solución</div><div class="solution-step"><p>Aceleración del sistema: a = F / (m₁ + m₂) = 15 / (3 + 2) = 3 m/s². Fuerza sobre m₁ debida únicamente a la tensión: T = m₁·a = 3 kg × 3 m/s² = 9 N.</p><p><strong>Respuesta:</strong> 9 N.</p></div><div class="back-ref"><a href="#">⬆ Volver arriba</a></div></div></div>
-            </div>
-        </div>
+    
+    <div style="text-align:center; margin:15px 0;">
+        <button class="btn btn-agregar" onclick="agregarFuerza()">➕ Agregar Fuerza</button>
+        <button class="btn btn-calcular" onclick="calcularResultante()">🧮 Calcular Resultante</button>
+        <button class="btn btn-limpiar" onclick="limpiarTodo()">🗑️ Limpiar</button>
     </div>
+    
+    <div class="resultado-calc" id="resultado">
+        <em>Los resultados aparecerán aquí...</em>
+    </div>
+</div>
 
-    <footer>
-        <p>© 2026 Curso de Física Práctica - Bachillerato. Diseñado de forma eficiente y estructurada.</p>
-    </footer>
+<script>
+let contadorFuerzas = 2;
+
+function agregarFuerza() {
+    contadorFuerzas++;
+    const container = document.getElementById('fuerzas-container');
+    const div = document.createElement('div');
+    div.className = 'fila-fuerza';
+    div.innerHTML = `
+        <label>F${contadorFuerzas}:</label>
+        <input type="number" id="mag${contadorFuerzas}" placeholder="Magnitud (N)" step="0.01">
+        <input type="number" id="ang${contadorFuerzas}" placeholder="Ángulo (°)" step="0.01">
+        <button class="btn btn-limpiar" style="padding:5px 10px; font-size:0.9em;" onclick="this.parentElement.remove()">✕</button>
+    `;
+    container.appendChild(div);
+}
+
+function calcularResultante() {
+    let sumRx = 0, sumRy = 0;
+    let detalle = '<table style="width:100%; margin:10px 0;"><tr><th>Fuerza</th><th>Magnitud</th><th>Ángulo</th><th>Fₓ</th><th>Fᵧ</th></tr>';
+    
+    for (let i = 1; i <= contadorFuerzas; i++) {
+        const magInput = document.getElementById('mag' + i);
+        const angInput = document.getElementById('ang' + i);
+        
+        if (!magInput || !angInput) continue;
+        
+        const mag = parseFloat(magInput.value);
+        const ang = parseFloat(angInput.value);
+        
+        if (isNaN(mag) || isNaN(ang)) continue;
+        
+        const rad = ang * Math.PI / 180;
+        const fx = mag * Math.cos(rad);
+        const fy = mag * Math.sin(rad);
+        
+        sumRx += fx;
+        sumRy += fy;
+        
+        detalle += `<tr><td>F${i}</td><td>${mag.toFixed(2)} N</td><td>${ang.toFixed(2)}°</td><td>${fx.toFixed(2)} N</td><td>${fy.toFixed(2)} N</td></tr>`;
+    }
+    
+    detalle += `<tr style="background:#d5f5e3; font-weight:bold;"><td colspan="3">Σ</td><td>${sumRx.toFixed(2)} N</td><td>${sumRy.toFixed(2)} N</td></tr></table>`;
+    
+    const R = Math.sqrt(sumRx*sumRx + sumRy*sumRy);
+    
+    let theta = Math.atan2(sumRy, sumRx) * 180 / Math.PI;
+    if (theta < 0) theta += 360;
+    
+    let cuadrante = '';
+    if (sumRx >= 0 && sumRy >= 0) cuadrante = 'I';
+    else if (sumRx < 0 && sumRy >= 0) cuadrante = 'II';
+    else if (sumRx < 0 && sumRy < 0) cuadrante = 'III';
+    else cuadrante = 'IV';
+    
+    document.getElementById('resultado').innerHTML = `
+        ${detalle}
+        <div style="margin-top:15px; padding:15px; background:var(--box-bg); border-radius:8px;">
+            <strong style="font-size:1.3em; color:var(--heading);">
+                R = ${R.toFixed(2)} N a ${theta.toFixed(2)}°
+            </strong><br>
+            <span style="font-size:0.95em;">Cuadrante ${cuadrante} | Rₓ = ${sumRx.toFixed(2)} N | Rᵧ = ${sumRy.toFixed(2)} N</span>
+        </div>
+    `;
+}
+
+function limpiarTodo() {
+    document.getElementById('fuerzas-container').innerHTML = `
+        <div class="fila-fuerza">
+            <label>F₁:</label>
+            <input type="number" id="mag1" placeholder="Magnitud (N)" step="0.01">
+            <input type="number" id="ang1" placeholder="Ángulo (°)" step="0.01">
+        </div>
+        <div class="fila-fuerza">
+            <label>F₂:</label>
+            <input type="number" id="mag2" placeholder="Magnitud (N)" step="0.01">
+            <input type="number" id="ang2" placeholder="Ángulo (°)" step="0.01">
+        </div>
+    `;
+    contadorFuerzas = 2;
+    document.getElementById('resultado').innerHTML = '<em>Los resultados aparecerán aquí...</em>';
+}
+</script>
+
+<h2>8. Consejos Prácticos</h2>
+
+<ul>
+    <li>🔹 <strong>Siempre dibuja un diagrama</strong> antes de calcular. Te ayuda a visualizar cuadrantes y signos.</li>
+    <li>🔹 <strong>Verifica los signos</strong> de las componentes según el cuadrante del ángulo.</li>
+    <li>🔹 <strong>Usa calculadora en modo grados (DEG)</strong>, no en radianes (RAD).</li>
+    <li>🔹 <strong>Redondea al final</strong>, no en pasos intermedios, para evitar errores de acumulación.</li>
+    <li>🔹 <strong>Comprueba tu resultado</strong>: la resultante debe estar "entre" las fuerzas originales en el diagrama.</li>
+    <li>🔹 Para problemas de equilibrio, recuerda que la fuerza de equilibrio es <strong>igual y opuesta</strong> a la resultante.</li>
+    <li>🔹 <strong>Usa la calculadora</strong> de esta guía para verificar tus ejercicios manualmente.</li>
+</ul>
+
+<div class="box" style="text-align:center; margin-top:40px;">
+    <strong>¡Éxito en tu práctica! 💪</strong><br>
+    La clave está en practicar muchos ejercicios y verificar siempre tus resultados.
+</div>
+
 </body>
 </html>
