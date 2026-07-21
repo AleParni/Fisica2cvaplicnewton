@@ -243,6 +243,7 @@
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--box-border); border-radius: 4px; }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -267,30 +268,40 @@
 
 <div class="svg-container">
 <svg width="400" height="300" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="none"/>
+  <rect width="400" height="300" fill="#fafafa"/>
+  
   <line x1="50" y1="250" x2="380" y2="250" stroke="#999" stroke-width="1.5"/>
   <line x1="200" y1="280" x2="200" y2="20" stroke="#999" stroke-width="1.5"/>
   <text x="385" y="255" font-size="12" fill="#666">X</text>
   <text x="205" y="15" font-size="12" fill="#666">Y</text>
+  
   <circle cx="200" cy="150" r="6" fill="#2980b9"/>
   <text x="210" y="145" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
   <defs>
-    <marker id="mk1a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <marker id="svg1_arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
     </marker>
-    <marker id="mk1b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <marker id="svg1_arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
     </marker>
-    <marker id="mk1c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <marker id="svg1_arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
     </marker>
+    <marker id="svg1_arrowR" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
+    </marker>
   </defs>
-  <line x1="200" y1="150" x2="300" y2="80" stroke="#e74c3c" stroke-width="3" marker-end="url(#mk1a)"/>
+  
+  <line x1="200" y1="150" x2="300" y2="80" stroke="#e74c3c" stroke-width="3" marker-end="url(#svg1_arrow1)"/>
   <text x="305" y="75" font-size="14" fill="#e74c3c" font-weight="bold">F₁</text>
-  <line x1="200" y1="150" x2="100" y2="80" stroke="#27ae60" stroke-width="3" marker-end="url(#mk1b)"/>
+  
+  <line x1="200" y1="150" x2="100" y2="80" stroke="#27ae60" stroke-width="3" marker-end="url(#svg1_arrow2)"/>
   <text x="70" y="75" font-size="14" fill="#27ae60" font-weight="bold">F₂</text>
-  <line x1="200" y1="150" x2="150" y2="240" stroke="#8e44ad" stroke-width="3" marker-end="url(#mk1c)"/>
+  
+  <line x1="200" y1="150" x2="150" y2="240" stroke="#8e44ad" stroke-width="3" marker-end="url(#svg1_arrow3)"/>
   <text x="130" y="255" font-size="14" fill="#8e44ad" font-weight="bold">F₃</text>
+  
   <text x="50" y="290" font-size="11" fill="#666">Tres fuerzas concurrentes en el punto O</text>
 </svg>
 </div>
@@ -320,30 +331,26 @@
 
 <div class="svg-container">
 <svg width="500" height="350" viewBox="0 0 500 350">
-  <rect width="500" height="350" fill="none"/>
-  <defs>
-    <marker id="mk2a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
-    </marker>
-    <marker id="mk2b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
-    </marker>
-    <marker id="mk2r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
-    </marker>
-  </defs>
-  <line x1="120" y1="250" x2="320" y2="250" stroke="#e74c3c" stroke-width="3" marker-end="url(#mk2a)"/>
+  <rect width="500" height="350" fill="#fafafa"/>
+  
+  <line x1="120" y1="250" x2="320" y2="250" stroke="#e74c3c" stroke-width="3" marker-end="url(#svg2_arrow1)"/>
   <text x="330" y="255" font-size="14" fill="#e74c3c" font-weight="bold">F₁</text>
-  <line x1="120" y1="250" x2="220" y2="100" stroke="#27ae60" stroke-width="3" marker-end="url(#mk2b)"/>
+  
+  <line x1="120" y1="250" x2="220" y2="100" stroke="#27ae60" stroke-width="3" marker-end="url(#svg2_arrow2)"/>
   <text x="225" y="90" font-size="14" fill="#27ae60" font-weight="bold">F₂</text>
+  
   <line x1="320" y1="250" x2="420" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="6,4"/>
   <line x1="220" y1="100" x2="420" y2="100" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <line x1="120" y1="250" x2="420" y2="100" stroke="#f39c12" stroke-width="4" marker-end="url(#mk2r)"/>
+  
+  <line x1="120" y1="250" x2="420" y2="100" stroke="#f39c12" stroke-width="4" marker-end="url(#svg1_arrowR)"/>
   <text x="430" y="95" font-size="16" fill="#f39c12" font-weight="bold">R</text>
+  
   <circle cx="120" cy="250" r="5" fill="#2980b9"/>
   <text x="105" y="265" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
   <path d="M 140,250 A 20,20 0 0,0 136,232" stroke="#666" stroke-width="1" fill="none"/>
   <text x="145" y="235" font-size="12" fill="#666">θ</text>
+  
   <text x="50" y="330" font-size="12" fill="#666">La diagonal del paralelogramo es la resultante R</text>
 </svg>
 </div>
@@ -359,61 +366,45 @@
 
 <div class="svg-container">
 <svg width="500" height="280" viewBox="0 0 500 280">
-  <rect width="500" height="280" fill="none"/>
-  <defs>
-    <marker id="mk3a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
-    </marker>
-    <marker id="mk3b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
-    </marker>
-    <marker id="mk3c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
-    </marker>
-    <marker id="mk3r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
-    </marker>
-  </defs>
-  <line x1="80" y1="200" x2="180" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#mk3a)"/>
+  <rect width="500" height="280" fill="#fafafa"/>
+  
+  <line x1="80" y1="200" x2="180" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#svg3_arrow1)"/>
   <text x="120" y="195" font-size="13" fill="#e74c3c" font-weight="bold">F₁</text>
-  <line x1="180" y1="200" x2="240" y2="120" stroke="#27ae60" stroke-width="3" marker-end="url(#mk3b)"/>
+  
+  <line x1="180" y1="200" x2="240" y2="120" stroke="#27ae60" stroke-width="3" marker-end="url(#svg3_arrow2)"/>
   <text x="245" y="115" font-size="13" fill="#27ae60" font-weight="bold">F₂</text>
-  <line x1="240" y1="120" x2="340" y2="140" stroke="#8e44ad" stroke-width="3" marker-end="url(#mk3c)"/>
+  
+  <line x1="240" y1="120" x2="340" y2="140" stroke="#8e44ad" stroke-width="3" marker-end="url(#svg3_arrow3)"/>
   <text x="345" y="135" font-size="13" fill="#8e44ad" font-weight="bold">F₃</text>
-  <line x1="80" y1="200" x2="340" y2="140" stroke="#f39c12" stroke-width="4" marker-end="url(#mk3r)"/>
+  
+  <line x1="80" y1="200" x2="340" y2="140" stroke="#f39c12" stroke-width="4" marker-end="url(#svg2_arrowR)" stroke-dasharray="0"/>
   <text x="200" y="155" font-size="16" fill="#f39c12" font-weight="bold">R</text>
+  
   <circle cx="80" cy="200" r="4" fill="#2980b9"/>
   <text x="65" y="215" font-size="12" fill="#2980b9" font-weight="bold">O</text>
+  
   <text x="50" y="260" font-size="12" fill="#666">Polígono de fuerzas: R une el origen con la punta del último vector</text>
 </svg>
 </div>
 
 <div class="svg-container">
 <svg width="500" height="280" viewBox="0 0 500 280">
-  <rect width="500" height="280" fill="none"/>
-  <defs>
-    <marker id="mk4a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
-    </marker>
-    <marker id="mk4b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
-    </marker>
-    <marker id="mk4c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
-    </marker>
-    <marker id="mk4d" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#3498db"/>
-    </marker>
-  </defs>
-  <line x1="150" y1="200" x2="250" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#mk4a)"/>
+  <rect width="500" height="280" fill="#fafafa"/>
+  
+  <line x1="150" y1="200" x2="250" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#svg4_arrow1)"/>
   <text x="190" y="195" font-size="13" fill="#e74c3c" font-weight="bold">F₁</text>
-  <line x1="250" y1="200" x2="300" y2="120" stroke="#27ae60" stroke-width="3" marker-end="url(#mk4b)"/>
+  
+  <line x1="250" y1="200" x2="300" y2="120" stroke="#27ae60" stroke-width="3" marker-end="url(#svg4_arrow2)"/>
   <text x="305" y="115" font-size="13" fill="#27ae60" font-weight="bold">F₂</text>
-  <line x1="300" y1="120" x2="200" y2="80" stroke="#8e44ad" stroke-width="3" marker-end="url(#mk4c)"/>
+  
+  <line x1="300" y1="120" x2="200" y2="80" stroke="#8e44ad" stroke-width="3" marker-end="url(#svg4_arrow3)"/>
   <text x="170" y="75" font-size="13" fill="#8e44ad" font-weight="bold">F₃</text>
-  <line x1="200" y1="80" x2="150" y2="200" stroke="#3498db" stroke-width="3" marker-end="url(#mk4d)"/>
+  
+  <line x1="200" y1="80" x2="150" y2="200" stroke="#3498db" stroke-width="3" marker-end="url(#svg3_arrowR)"/>
   <text x="120" y="150" font-size="13" fill="#3498db" font-weight="bold">F₄</text>
+  
   <circle cx="150" cy="200" r="4" fill="#2980b9"/>
+  
   <text x="50" y="260" font-size="12" fill="#666">Polígono cerrado → Equilibrio: R = 0</text>
 </svg>
 </div>
@@ -440,34 +431,31 @@ Donde θ es el ángulo medido desde el eje X positivo en sentido antihorario.
 
 <div class="svg-container">
 <svg width="450" height="350" viewBox="0 0 450 350">
-  <rect width="450" height="350" fill="none"/>
-  <defs>
-    <marker id="mk5a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
-    </marker>
-    <marker id="mk5b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
-    </marker>
-    <marker id="mk5c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
-    </marker>
-  </defs>
+  <rect width="450" height="350" fill="#fafafa"/>
+  
   <line x1="50" y1="300" x2="420" y2="300" stroke="#999" stroke-width="1.5"/>
   <line x1="100" y1="330" x2="100" y2="30" stroke="#999" stroke-width="1.5"/>
   <text x="425" y="305" font-size="12" fill="#666">X</text>
   <text x="105" y="25" font-size="12" fill="#666">Y</text>
-  <line x1="100" y1="300" x2="320" y2="100" stroke="#e74c3c" stroke-width="3" marker-end="url(#mk5a)"/>
+  
+  <line x1="100" y1="300" x2="320" y2="100" stroke="#e74c3c" stroke-width="3" marker-end="url(#svg5_arrow1)"/>
   <text x="330" y="95" font-size="15" fill="#e74c3c" font-weight="bold">F</text>
-  <line x1="100" y1="300" x2="320" y2="300" stroke="#27ae60" stroke-width="2.5" marker-end="url(#mk5b)"/>
+  
+  <line x1="100" y1="300" x2="320" y2="300" stroke="#27ae60" stroke-width="2.5" marker-end="url(#svg5_arrow2)"/>
   <text x="200" y="320" font-size="13" fill="#27ae60" font-weight="bold">Fₓ = F·cos(θ)</text>
-  <line x1="320" y1="300" x2="320" y2="100" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#mk5c)"/>
+  
+  <line x1="320" y1="300" x2="320" y2="100" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#svg5_arrow3)"/>
   <text x="330" y="200" font-size="13" fill="#8e44ad" font-weight="bold">Fᵧ = F·sen(θ)</text>
+  
   <path d="M 120,300 A 20,20 0 0,0 116,282" stroke="#666" stroke-width="1.5" fill="none"/>
   <text x="125" y="285" font-size="14" fill="#666" font-weight="bold">θ</text>
+  
   <circle cx="100" cy="300" r="5" fill="#2980b9"/>
   <text x="85" y="315" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
   <line x1="320" y1="100" x2="320" y2="300" stroke="#8e44ad" stroke-width="1" stroke-dasharray="4,3"/>
   <line x1="100" y1="300" x2="320" y2="300" stroke="#27ae60" stroke-width="1" stroke-dasharray="4,3"/>
+  
   <text x="50" y="345" font-size="11" fill="#666">Descomposición de un vector en componentes rectangulares</text>
 </svg>
 </div>
@@ -532,39 +520,32 @@ Donde θ es el ángulo medido desde el eje X positivo en sentido antihorario.
 
 <div class="svg-container">
 <svg width="400" height="350" viewBox="0 0 400 350">
-  <rect width="400" height="350" fill="none"/>
-  <defs>
-    <marker id="mk6a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
-    </marker>
-    <marker id="mk6b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
-    </marker>
-    <marker id="mk6c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
-    </marker>
-    <marker id="mk6d" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
-    </marker>
-  </defs>
+  <rect width="400" height="350" fill="#fafafa"/>
+  
   <line x1="200" y1="320" x2="200" y2="30" stroke="#999" stroke-width="1.5"/>
   <line x1="30" y1="175" x2="370" y2="175" stroke="#999" stroke-width="1.5"/>
   <text x="205" y="25" font-size="12" fill="#666">Y</text>
   <text x="375" y="180" font-size="12" fill="#666">X</text>
+  
   <text x="270" y="100" font-size="16" fill="#27ae60" font-weight="bold">I</text>
   <text x="270" y="120" font-size="11" fill="#27ae60">Rₓ (+) Rᵧ (+)</text>
-  <line x1="220" y1="140" x2="280" y2="80" stroke="#27ae60" stroke-width="2" marker-end="url(#mk6b)"/>
+  <line x1="220" y1="140" x2="280" y2="80" stroke="#27ae60" stroke-width="2" marker-end="url(#svg6_arrow2)"/>
+  
   <text x="100" y="100" font-size="16" fill="#e74c3c" font-weight="bold">II</text>
   <text x="80" y="120" font-size="11" fill="#e74c3c">Rₓ (-) Rᵧ (+)</text>
-  <line x1="180" y1="140" x2="120" y2="80" stroke="#e74c3c" stroke-width="2" marker-end="url(#mk6a)"/>
+  <line x1="180" y1="140" x2="120" y2="80" stroke="#e74c3c" stroke-width="2" marker-end="url(#svg6_arrow1)"/>
+  
   <text x="100" y="260" font-size="16" fill="#8e44ad" font-weight="bold">III</text>
   <text x="80" y="280" font-size="11" fill="#8e44ad">Rₓ (-) Rᵧ (-)</text>
-  <line x1="180" y1="210" x2="120" y2="270" stroke="#8e44ad" stroke-width="2" marker-end="url(#mk6c)"/>
+  <line x1="180" y1="210" x2="120" y2="270" stroke="#8e44ad" stroke-width="2" marker-end="url(#svg6_arrow3)"/>
+  
   <text x="270" y="260" font-size="16" fill="#f39c12" font-weight="bold">IV</text>
   <text x="270" y="280" font-size="11" fill="#f39c12">Rₓ (+) Rᵧ (-)</text>
-  <line x1="220" y1="210" x2="280" y2="270" stroke="#f39c12" stroke-width="2" marker-end="url(#mk6d)"/>
+  <line x1="220" y1="210" x2="280" y2="270" stroke="#f39c12" stroke-width="2" marker-end="url(#svg4_arrowR)"/>
+  
   <circle cx="200" cy="175" r="5" fill="#2980b9"/>
   <text x="210" y="170" font-size="12" fill="#2980b9" font-weight="bold">O</text>
+  
   <text x="300" y="160" font-size="11" fill="#666">0°</text>
   <text x="180" y="50" font-size="11" fill="#666">90°</text>
   <text x="60" y="160" font-size="11" fill="#666">180°</text>
@@ -586,37 +567,31 @@ Donde θ es el ángulo medido desde el eje X positivo en sentido antihorario.
 
 <div class="svg-container">
 <svg width="500" height="400" viewBox="0 0 500 400">
-  <rect width="500" height="400" fill="none"/>
-  <defs>
-    <marker id="mk7a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
-    </marker>
-    <marker id="mk7b" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
-    </marker>
-    <marker id="mk7c" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#8e44ad"/>
-    </marker>
-    <marker id="mk7r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
-    </marker>
-  </defs>
+  <rect width="500" height="400" fill="#fafafa"/>
+  
   <line x1="50" y1="350" x2="480" y2="350" stroke="#999" stroke-width="1.5"/>
   <line x1="250" y1="380" x2="250" y2="30" stroke="#999" stroke-width="1.5"/>
   <text x="485" y="355" font-size="12" fill="#666">X</text>
   <text x="255" y="25" font-size="12" fill="#666">Y</text>
-  <line x1="250" y1="200" x2="319" y2="160" stroke="#e74c3c" stroke-width="3" marker-end="url(#mk7a)"/>
+  
+  <line x1="250" y1="200" x2="319" y2="160" stroke="#e74c3c" stroke-width="3" marker-end="url(#svg7_arrow1)"/>
   <text x="325" y="155" font-size="13" fill="#e74c3c" font-weight="bold">F₁=100N (30°)</text>
-  <line x1="250" y1="200" x2="190" y2="96" stroke="#27ae60" stroke-width="3" marker-end="url(#mk7b)"/>
+  
+  <line x1="250" y1="200" x2="190" y2="96" stroke="#27ae60" stroke-width="3" marker-end="url(#svg7_arrow2)"/>
   <text x="130" y="86" font-size="13" fill="#27ae60" font-weight="bold">F₂=150N (120°)</text>
-  <line x1="250" y1="200" x2="218" y2="255" stroke="#8e44ad" stroke-width="3" marker-end="url(#mk7c)"/>
+  
+  <line x1="250" y1="200" x2="218" y2="255" stroke="#8e44ad" stroke-width="3" marker-end="url(#svg7_arrow3)"/>
   <text x="170" y="275" font-size="13" fill="#8e44ad" font-weight="bold">F₃=80N (240°)</text>
-  <line x1="250" y1="200" x2="207" y2="34" stroke="#f39c12" stroke-width="4" marker-end="url(#mk7r)"/>
+  
+  <line x1="250" y1="200" x2="207" y2="34" stroke="#f39c12" stroke-width="4" marker-end="url(#svg6_arrowR)"/>
   <text x="170" y="20" font-size="15" fill="#f39c12" font-weight="bold">R ≈ 114.2 N</text>
+  
   <circle cx="250" cy="200" r="6" fill="#2980b9"/>
   <text x="260" y="195" font-size="13" fill="#2980b9" font-weight="bold">O</text>
+  
   <path d="M 270,200 A 20,20 0 0,0 266,182" stroke="#e74c3c" stroke-width="1" fill="none"/>
   <text x="275" y="185" font-size="11" fill="#e74c3c">30°</text>
+  
   <path d="M 230,200 A 20,20 0 0,1 234,182" stroke="#27ae60" stroke-width="1" fill="none"/>
   <text x="200" y="185" font-size="11" fill="#27ae60">120°</text>
 </svg>
@@ -738,7 +713,7 @@ Donde θ es el ángulo medido desde el eje X positivo en sentido antihorario.
 <div class="calculadora">
     <h3>⚡ Calculadora Interactiva</h3>
     <p>Ingresa las fuerzas y sus ángulos (en grados, desde el eje X positivo en sentido antihorario):</p>
-    
+
     <div id="fuerzas-container">
         <div class="fila-fuerza">
             <label>F₁:</label>
@@ -751,13 +726,13 @@ Donde θ es el ángulo medido desde el eje X positivo en sentido antihorario.
             <input type="number" id="ang2" placeholder="Ángulo (°)" step="0.01">
         </div>
     </div>
-    
+
     <div style="text-align:center; margin:15px 0;">
         <button class="btn btn-agregar" onclick="agregarFuerza()">➕ Agregar Fuerza</button>
         <button class="btn btn-calcular" onclick="calcularResultante()">🧮 Calcular Resultante</button>
         <button class="btn btn-limpiar" onclick="limpiarTodo()">🗑️ Limpiar</button>
     </div>
-    
+
     <div class="resultado-calc" id="resultado">
         <em>Los resultados aparecerán aquí...</em>
     </div>
@@ -783,41 +758,41 @@ function agregarFuerza() {
 function calcularResultante() {
     let sumRx = 0, sumRy = 0;
     let detalle = '<table style="width:100%; margin:10px 0;"><tr><th>Fuerza</th><th>Magnitud</th><th>Ángulo</th><th>Fₓ</th><th>Fᵧ</th></tr>';
-    
+
     for (let i = 1; i <= contadorFuerzas; i++) {
         const magInput = document.getElementById('mag' + i);
         const angInput = document.getElementById('ang' + i);
-        
+
         if (!magInput || !angInput) continue;
-        
+
         const mag = parseFloat(magInput.value);
         const ang = parseFloat(angInput.value);
-        
+
         if (isNaN(mag) || isNaN(ang)) continue;
-        
+
         const rad = ang * Math.PI / 180;
         const fx = mag * Math.cos(rad);
         const fy = mag * Math.sin(rad);
-        
+
         sumRx += fx;
         sumRy += fy;
-        
+
         detalle += `<tr><td>F${i}</td><td>${mag.toFixed(2)} N</td><td>${ang.toFixed(2)}°</td><td>${fx.toFixed(2)} N</td><td>${fy.toFixed(2)} N</td></tr>`;
     }
-    
+
     detalle += `<tr style="background:#d5f5e3; font-weight:bold;"><td colspan="3">Σ</td><td>${sumRx.toFixed(2)} N</td><td>${sumRy.toFixed(2)} N</td></tr></table>`;
-    
+
     const R = Math.sqrt(sumRx*sumRx + sumRy*sumRy);
-    
+
     let theta = Math.atan2(sumRy, sumRx) * 180 / Math.PI;
     if (theta < 0) theta += 360;
-    
+
     let cuadrante = '';
     if (sumRx >= 0 && sumRy >= 0) cuadrante = 'I';
     else if (sumRx < 0 && sumRy >= 0) cuadrante = 'II';
     else if (sumRx < 0 && sumRy < 0) cuadrante = 'III';
     else cuadrante = 'IV';
-    
+
     document.getElementById('resultado').innerHTML = `
         ${detalle}
         <div style="margin-top:15px; padding:15px; background:var(--box-bg); border-radius:8px;">
